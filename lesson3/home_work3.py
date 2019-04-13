@@ -55,14 +55,28 @@ print(fibonacci(3,12))
 
 
 def sort_to_max(origin_list):
-    pass
-
-sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0])
+    i = 1
+    while i < len(origin_list):
+        for j in range(len(origin_list) - i):
+            if origin_list[j] > origin_list[j + 1]:
+                origin_list[j], origin_list[j + 1] = origin_list[j + 1], origin_list[j]
+        i += 1
+    return origin_list
+print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
 
 # Задача-3:
 # Напишите собственную реализацию стандартной функции filter.
 # Разумеется, внутри нельзя использовать саму функцию filter.
+def my_filter(func,iter):
+    out_iter = []
+    for i in range(len(iter)):
+        if func(iter[i]) == True:
+            out_iter.append(iter[i])
+    return out_iter
 
+func = lambda x: type(x) == int
+iter = [-1, 2, 'a', 4, 'fgf']
+print(my_filter(func,iter))
 
 # Задача-4:
 # Даны четыре точки А1(х1, у1), А2(x2 ,у2), А3(x3 , у3), А4(х4, у4).
