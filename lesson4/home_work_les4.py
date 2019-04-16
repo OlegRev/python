@@ -74,6 +74,24 @@ line = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysmNO' \
 
 re_template = r"[A-Z]*([a-z]+)*[A-Z]"
 print(re.findall(re_template, line))
+print('#'*30)
+line_list = list(line)
+template = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+for idx, value in enumerate(line_list[:]):             # преобразование строки
+    for itm in template:                               # с удаление заклавных
+        if value == itm:                               # букв и замену их на пробел
+            line_list.remove(value)                    #
+            line_list.insert(idx,' ')                  #
+
+line = ''.join(line_list).split(' ')           #объединение списка с разбиением по пробелу
+simvol_temp = list("1234567890!@#$%^&*()_+[]{}\|:;.,/?' ")       #  удаление ненужных элементов
+for value in line:                                               #  списка содержащие в себе
+    for item in simvol_temp:                                     #  символы  указаные в simvol_temp
+        if item in value :                                       #
+            line.remove(value)                                   #
+line2 = [i for i in line if i != '']                             #
+print(line2)
+
 
 
 
@@ -127,6 +145,25 @@ print(re.findall(re_template, line_2))
 # Найдите и выведите самую длинную последовательность одинаковых цифр
 
 # в вышезаполненном файле.
+
+import random
+import os
+
+numb = 2500
+itm_list = [random.randint(0,9) for item in range(numb)]
+
+print(itm_list)
+
+_itm_list = list(map(lambda x: str(x), itm_list))
+str_itm_list = ''.join(_itm_list)
+print(str_itm_list)
+path = os.path.join('file', 'file.txt')
+with open(path, 'w', encoding='UTF-8') as file:
+    file.write(str_itm_list)
+with open(path, 'r', encoding='UTF-8') as file:
+    str_list_read = list(file.read())
+print(str_list_read)
+#не успел сделать цикл проверки максимальной помледовательность одинаковых цифр
 
 #########################################################
 # Задание-1:HARD
