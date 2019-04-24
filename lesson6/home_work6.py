@@ -255,9 +255,9 @@ student = students[3]
 
 list_subject_of_study = [itm for itm in teachers if student.get_a_class() in itm.get_a_classes()]
 
-sub = [itm.subject for itm in teachers]
+sub = [itm.subject for itm in list_subject_of_study]
 print(student.full_name() + '-|>' + student.get_a_class() + \
-      '-|>' +  ' '.join(map(str, list_subject_of_study)) + '-|>' + ' '.join(map(str, sub)))
+      '-|>' +  ' '.join(map(lambda x: x.full_name(), list_subject_of_study)) + '-|>' + ' '.join(map(str, sub)))
 
 his_parents = student.get_a_parents()
 print(his_parents)
